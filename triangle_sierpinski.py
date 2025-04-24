@@ -31,8 +31,8 @@ def generate_mesh(depth, thickness=0.1):
     return meshes
 
 # Définir le niveau de profondeur et l'épaisseur
-depth = 5
-thickness = 0.1
+depth = 2
+thickness = 0.05
 
 # Générer les maillages
 meshes = generate_mesh(depth, thickness)
@@ -40,10 +40,10 @@ meshes = generate_mesh(depth, thickness)
 # Créer un plotter PyVista
 plotter = pv.Plotter()
 
-# Ajouter chaque maillage au plotter avec des couleurs et des libellés alternés
+# Ajouter chaque maillage au plotter avec des couleur et des libellé
 for i, mesh in enumerate(meshes):
-    color = 'red' #if i % 2 == 0 else 'green'
-    label = 'Triangle'# Rouge' if i % 2 == 0 else 'Triangle Vert'
+    color = 'red' 
+    label = 'Triangle'
     plotter.add_mesh(mesh, color=color, show_edges=False, opacity=1.0, label=label)
 
 # Ajouter le repère au centre
@@ -57,3 +57,7 @@ plotter.show_grid()
 
 # Afficher le rendu
 plotter.show()
+
+
+
+

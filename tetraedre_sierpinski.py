@@ -38,11 +38,6 @@ def sierpinski_tetra(vertices, depth):
 def create_initial_tetrahedron(size=1.0):
     """
     Crée un tétraèdre régulier de côté 'size' avec une géométrie simple.
-    Points choisis :
-      - v0 = (0, 0, 0)
-      - v1 = (size, 0, 0)
-      - v2 = (size/2, size*sqrt(3)/2, 0)
-      - v3 = (size/2, size*sqrt(3)/6, size*sqrt(6)/3)
     """
     return [
         (0, 0, 0),
@@ -85,7 +80,7 @@ def collect_mesh_data(tetrahedres):
     return vertices, faces
 
 # --- Génération du modèle fractal ---
-depth = 3  # Par exemple, depth=3 donnera 4^3 = 64 tétraèdres
+depth =5  # Par exemple, depth=3 donnera 4^3 = 64 tétraèdres
 initial = create_initial_tetrahedron(size=1.0)
 tetrahedres = sierpinski_tetra(initial, depth)
 vertices, face_indices = collect_mesh_data(tetrahedres)
@@ -103,11 +98,11 @@ mesh = pv.PolyData(vertices_np, faces_np)
 
 # --- Création d'un repère (axes) ---
 axes_x = pv.Arrow(start=(0, 0, 0), direction=(1, 0, 0),
-                  tip_length=0.1, tip_radius=0.02, shaft_radius=0.005)
+                  tip_length=0.05, tip_radius=0.02, shaft_radius=0.005)
 axes_y = pv.Arrow(start=(0, 0, 0), direction=(0, 1, 0),
-                  tip_length=0.1, tip_radius=0.02, shaft_radius=0.005)
+                  tip_length=0.05, tip_radius=0.02, shaft_radius=0.005)
 axes_z = pv.Arrow(start=(0, 0, 0), direction=(0, 0, 1),
-                  tip_length=0.1, tip_radius=0.02, shaft_radius=0.005)
+                  tip_length=0.05, tip_radius=0.02, shaft_radius=0.005)
 
 # --- Création d'une grille dans le plan XY (z = 0) ---
 def create_grid(xlim=(-0.5, 1.5), ylim=(-0.5, 1.5), spacing=0.1):
